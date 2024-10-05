@@ -36,7 +36,7 @@
 1\. First of all you need to clone repository from github:
 
 ```sh
-git clone https://github.com/datomaluta/mern-blog.git
+git clone https://github.com/datomaluta/devsdata-task
 ```
 
 2\. Install all the dependencies
