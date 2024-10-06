@@ -10,16 +10,15 @@ const CharactersList = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [hasNextPage, setHasNextPage] = useState(null);
-
   const [selectedCharacter, setSelectedCharacter] =
     useState<CharacterType | null>(null);
-
   const [searchParams, setSearchParams] = useSearchParams();
-  const pageParam = searchParams.get("page") || 1;
   const [searchString, setSearchString] = useState(
     searchParams.get("search") || ""
   );
+
   const searchParam = searchParams.get("search") || "";
+  const pageParam = searchParams.get("page") || 1;
 
   useEffect(() => {
     const getCharacters = async () => {
@@ -39,7 +38,6 @@ const CharactersList = () => {
       } catch (error: any) {
         setCharacters([]);
         setHasNextPage(null);
-
         setError(
           error?.message || "Something went wrong with the characters fetching"
         );
@@ -69,7 +67,7 @@ const CharactersList = () => {
           defaultValue={searchParam}
           onChange={(e) => setSearchString(e.target.value)}
           type="text"
-          className=" border-neutral-400 bg-transparent border px-2 py-2 max-w-[350px] w-full rounded"
+          className=" border-neutral-400 bg-transparent border px-2 py-2 max-w-[22rem] w-full rounded"
           placeholder="Search by name..."
         />
         <button
@@ -91,7 +89,7 @@ const CharactersList = () => {
         <p className="">No characters found</p>
       )}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-10 min-h-[340px] relative">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-10 min-h-[21rem] relative">
         {isLoading && (
           <div className="absolute top-0 left-0 right-0 bottom-0 bg-black  bg-opacity-30 rounded flex justify-center items-center">
             <CgSpinner className="animate-spin text-3xl text-blue-500" />
@@ -101,7 +99,7 @@ const CharactersList = () => {
           <div
             onClick={() => setSelectedCharacter(character)}
             key={index}
-            className="rounded border border-neutral-400 p-4 min-w-[200px] h-[100px] cursor-pointer bg-neutral-700 hover:bg-neutral-800 flex justify-between gap-4 text-lg flex-wrap"
+            className="rounded border border-neutral-400 p-4 min-w-[12.5rem] h-[6.25rem] cursor-pointer bg-neutral-700 hover:bg-neutral-800 flex justify-between gap-4 text-lg flex-wrap"
           >
             <p className="font-bold">Name:</p>
             <p>{character?.name}</p>
@@ -111,7 +109,7 @@ const CharactersList = () => {
 
       <div className="flex gap-4 mt-10">
         <button
-          disabled={+pageParam === 1}
+          disabled={+pageParam === 1 || isLoading}
           className="border border-neutral-400 px-4 py-1 disabled:cursor-not-allowed disabled:text-neutral-500 disabled:border-neutral-500 rounded hover:bg-blue-500"
           onClick={() => {
             setSearchParams({
@@ -126,7 +124,7 @@ const CharactersList = () => {
           {pageParam}
         </div>
         <button
-          disabled={!hasNextPage}
+          disabled={!hasNextPage || isLoading}
           onClick={() => {
             setSearchParams({
               search: searchString,

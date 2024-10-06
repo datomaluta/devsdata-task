@@ -204,7 +204,7 @@ const CharacterDetails = ({
       {!details && (
         <button
           onClick={() => fetchDetails()}
-          className="mt-8 bg-blue-600  px-4 py-2 mx-auto flex items-center justify-center gap-2 rounded min-w-[200px] min-h-[40px]"
+          className="mt-8 bg-blue-600  px-4 py-2 mx-auto flex items-center justify-center gap-2 rounded min-w-[12.5rem] min-h-[2.5rem]"
         >
           {isLoading ? (
             <CgSpinner className="animate-spin text-xl" />
