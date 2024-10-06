@@ -110,7 +110,7 @@ const CharactersList = () => {
           className="border border-neutral-400 px-4 py-1 disabled:cursor-not-allowed disabled:text-neutral-500 disabled:border-neutral-500 rounded hover:bg-blue-500"
           onClick={() => {
             setSearchParams({
-              search: searchString,
+              search: searchParam,
               page: (+pageParam - 1).toString(),
             });
           }}
@@ -124,7 +124,7 @@ const CharactersList = () => {
           disabled={!hasNextPage || isLoading}
           onClick={() => {
             setSearchParams({
-              search: searchString,
+              search: searchParam,
               page: (+pageParam + 1).toString(),
             });
           }}
