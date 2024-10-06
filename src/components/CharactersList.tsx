@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { AnimatePresence } from "framer-motion";
 import { useSearchParams } from "react-router-dom";
 import { CharacterType } from "../types/types";
 import CharacterDetails from "./CharacterDetails";
@@ -51,14 +50,12 @@ const CharactersList = () => {
 
   return (
     <div>
-      <AnimatePresence>
-        {selectedCharacter && (
-          <CharacterDetails
-            selectedCharacter={selectedCharacter}
-            setSelectedCharacter={setSelectedCharacter}
-          />
-        )}
-      </AnimatePresence>
+      {selectedCharacter && (
+        <CharacterDetails
+          selectedCharacter={selectedCharacter}
+          setSelectedCharacter={setSelectedCharacter}
+        />
+      )}
 
       <h1 className="text-3xl mb-10 text-center">Characters List</h1>
 

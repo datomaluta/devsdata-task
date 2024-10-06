@@ -31,10 +31,6 @@ const ModalWrapper = ({
           y: "-50%",
           x: "-50%",
         }}
-        exit={{
-          opacity: 0,
-          y: "-150%",
-        }}
         transition={{ duration: 0.3 }}
       >
         <button
